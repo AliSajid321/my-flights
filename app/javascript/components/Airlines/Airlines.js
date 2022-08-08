@@ -9,9 +9,27 @@ const Home = styled.div`
     margin-left: auto;
     margin-right: auto;
 `;
-const Header = styled.div``;
-const Subheader = styled.div``;
-const Grid = styled.div``;
+
+const Header = styled.div`
+    padding: 100px 100px 10px 100px;
+
+    h1 {
+        font-size: 42px;
+    }
+`;
+
+const Subheader = styled.div`
+    font-weight: 300;
+    font-size: 26px;
+`;
+
+const Grid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+`;
 
 
 function Airlines() {
@@ -20,9 +38,7 @@ function Airlines() {
 
     useEffect(()=> {
         axios.get('/api/v1/airlines.json')
-        .then(resp => {
-            setairlines(resp.data.data)
-        })
+        .then(resp => setairlines(resp.data.data))
         .catch(resp => console.log(resp))
     },[airlines.length]);
     
@@ -38,15 +54,15 @@ function Airlines() {
     return (
     
         <Home>
-            <div className="header"> 
-                <h1>This is the Airlines#index view on React </h1>
-            </div>
-            <div className="subheader">
+            <Header> 
+                <h1>MyFlights React</h1>
+            </Header>
+            <Subheader>
                 <h2>Welcome to My Flights</h2>
-            </div>
-            <div className="grid">
-                <ul>{grid}</ul>
-            </div>
+            </Subheader>
+            <Grid>
+                {grid}
+            </Grid>
         </Home>
     );
 }
