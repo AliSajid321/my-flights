@@ -27,9 +27,13 @@ function Airline() {
     return (
         <div className="wrapper">
             <div className="column">
-                <Header 
-                    attributes={airline.attributes.data}
-                />
+                { loaded && 
+                    <Header 
+                        attributes={ airline.data.attributes }
+                        reviews = {airline.included}
+                    />
+                }
+                
                 <div className="review"></div>
             </div>
             <div className="column">
