@@ -19,6 +19,7 @@ const RatingBox = styled.div `
     justify-content: center;
     flex-direction: row-reverse;
     position: relative;
+    margin-top: 12px;
 
     input {
         display: none;
@@ -46,6 +47,67 @@ const RatingBox = styled.div `
 `
 
 const RatingTitle = styled.div `
+    font-size: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+`
+
+const Wrapper = styled.div`
+    background: #fff;
+    padding: 20px;
+    background: #000;
+    height: 100vh;
+    padding-top:100px;
+`
+
+const Field = styled.div`
+    border-radius: 4px;
+
+
+    input{
+        min-height: 50px;
+        border-radius: 4px;
+        border: 1px solid #e6e6e6;
+        margin: 0 0 12px 0;
+        padding: 12px;
+        width: 96%;
+    }
+
+    textarea{
+        width: 100%;
+        min-height: 80px;
+        border-radius: 4px;
+        border: 1px solid #e6e6e6;
+        margin: 12px 0;
+        padding: 12px;
+    }
+`
+
+const SubmitBtn = styled.button`
+    color: #fff;
+    background: #333;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: ease-in-out 0.1s;
+    border: 1px solid #fff; 
+    width: 100%;
+    padding-top: 20px;
+
+    &:hover {
+        color: #333;
+        background: #000;
+        border: 1px solid #fff;
+
+    }
+`
+
+const Headline = styled.div`
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
 
 `
 
@@ -53,32 +115,32 @@ const ReviewForm = (props) => {
     
     const ratingOptions = [5,4,3,2,1].map((score,index)=>{
         return(<Fragment>
-            <input type="radio" value={score} name="rating" onChange={()=> console.log('selected:', score)} id={`rating-${score}`} />
-            <label></label>
+            <input type="radio" value={score} checked={props.review.score == score} name="rating" onChange={()=> console.log('selected:', score)} id={`rating-${score}`} />
+            <label onClick={ props.setRating.bind(this, score) }></label>
         </Fragment>)
     });
 
     return (
-        <div className="wrapper">
+        <Wrapper>
             <form onSubmit={props.handleSubmit}>
-                <div> Have an experience with {props.attributes.name}? Share your experience as a review! </div>
-                <div className="field">
+                <Headline> Have an experience with {props.attributes.name}? Share your experience as a review! </Headline>
+                <Field>
                     <input onChange={props.handleChange} value={props.review.title} type="text" name="title" placeholder="Review Title" />
-                </div>
-                <div className="field">
+                </Field>
+                <Field>
                     <input onChange={props.handleChange} value={props.review.description} type="text" name="description" placeholder="Review description" />
-                </div>
-                <div className="field">
+                </Field>
+                <Field>
                     <RatingContainer>
-                        <div className="rating-title-text">Rate this Airline</div>
+                        <RatingTitle className="rating-title-text">Rate this Airline</RatingTitle>
                         <RatingBox>
                             {ratingOptions}
                         </RatingBox>
                     </RatingContainer>
-                </div>
-                <button type="submit">Submit your Review</button>
+                </Field>
+                <SubmitBtn type="submit">Submit your Review</SubmitBtn>
             </form>
-        </div>
+        </Wrapper>
     )
 }
 
