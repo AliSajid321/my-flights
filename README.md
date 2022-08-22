@@ -25,4 +25,3 @@ Troubleshoot Webpack issue:
 
 If you come across this error when trying to run the server then stop the server and run the command ``` yarn add @rails/webpacker ``` followed by ``` rails webpacker:install ``` to resolve the issue. The server should start properly now.
 
-* ...
