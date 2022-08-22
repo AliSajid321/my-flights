@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to My flights. An app that allows you to write reviews on different American Airlines. The backend is designed in Rails 6 and the frontend in React.
 
-Things you may want to cover:
+Prerequistes:
 
-* Ruby version
+* Ruby version: 3.0.4
+* Rails: 6.1.6.1
+* Database: Sqlite3
 
-* System dependencies
+Running Locally:
 
-* Configuration
+* Install dependencies ``` bundle install ```
 
-* Database creation
+* Migrate database ``` rails db:migrate ```
 
-* Database initialization
+* Database initialization with seed data ``` rails db:seed ``` 
 
-* How to run the test suite
+* Start the server ``` rails s ```
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Troubleshoot Webpack issue:
+
+* Webpacker::Manifest::MissingEntryError in Pages#index
+
+If you come across this error when trying to run the server then stop the server and run the command ``` yarn add @rails/webpacker ``` followed by ``` rails webpacker:install ``` to resolve the issue. The server should start properly now.
 
 * ...
